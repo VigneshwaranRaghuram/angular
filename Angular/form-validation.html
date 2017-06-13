@@ -1,0 +1,129 @@
+<html>
+<head>
+<title>Angular JS Scope</title>
+ <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<style type="text/css">
+	body{font-family: arial;}	
+	.error{color:red;}
+</style>
+</head>
+
+<body ng-app="myApp">
+<div class="container" ng-controller="myController">
+			<div class="row main">
+				<div class="col-md-6">
+					<div class="main-login main-center" style="margin-top: 20px;">
+					
+						<form ng-submit="onSubmit()" name="regForm">
+							
+							<div class="form-group">
+								<label for="name" class="cols-sm-2 control-label">User Name</label>
+								<div class="cols-sm-10">
+									
+										
+										<input type="text" class="form-control" name="user_name"  placeholder="Enter your Username" ng-model="user.user_name" ng-required="true" ng-maxlength="10"/>
+										<span class="error" ng-show="regForm.user_name.$invalid && regForm.user_name.$dirty">Please enter character below 10</span>
+																	</div>
+							</div>
+
+							<div class="form-group">
+								<label for="email" class="cols-sm-2 control-label">Your Email</label>
+								<div class="cols-sm-10">
+									
+										
+										<input type="email" class="form-control" name="email" id="email"  placeholder="Enter your Email" ng-model="user.user_email" ng-required="true"/>
+										<span class="error" ng-show="regForm.email.$invalid && regForm.email.$dirty">Please enter valid Email id</span>
+									
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="username" class="cols-sm-2 control-label">Age</label>
+								<div class="cols-sm-10">
+									
+										
+										<input type="number" class="form-control" name="age" id="username"  placeholder="Enter your Age" ng-model="user.user_age" ng-min="18" ng-required="true"/>
+										<span class="error" ng-show="regForm.age.$invalid && regForm.age.$dirty">Age Should above 18</span>
+									
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="password" class="cols-sm-2 control-label">Country</label>
+								<div class="cols-sm-10">
+									
+										
+										<select class="form-control" ng-init="user.country=countries[2].country_id" ng-options="country.country_id as country.country_name for country in countries" ng-model="user.country">
+											
+										</select>
+									
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="password" class="cols-sm-2 control-label">Password</label>
+								<div class="cols-sm-10">
+									
+										
+										<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password" ng-model="user.user_password"/>
+									
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+								<div class="cols-sm-10">
+									
+										
+										<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password" ng-model="user.user_confirmpwd"/>
+									
+								</div>
+							</div>
+
+							<div class="form-group ">
+								<button type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button"regForm.$invalid  ng-disabled="regForm.$invalid">Register</button>
+							</div>
+							
+						</form>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<h2>Debug</h2>
+					<!--<pre>{{user | json}}</pre>-->
+					<!--<pre>{{user.country | json}}</pre>-->
+					<pre>{{regForm | json}}</pre>
+				</div>
+			</div>
+		</div>
+		<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<script type="text/javascript" src="angular.min.js"></script>
+<script type="text/javascript">
+	var app = angular.module('myApp', []);
+	app.controller('myController', function($scope){
+		$scope.countries = [
+			{
+				"country_id" : 1,
+				"country_name" : "US"
+			},
+			{
+				"country_id" : 2,
+				"country_name" : "UK"
+			},
+			{
+				"country_id" : 3,
+				"country_name" : "INDIA"
+			}
+		];
+				$scope.onSubmit = function(){
+					console.log($scope.user);
+				}
+	});
+</script>
+</body>
+</html>
