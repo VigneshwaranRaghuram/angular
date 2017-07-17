@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AngularJS sorting
+        </title>
+        <script src="angular.min.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body ng-app="sorting">
+        <div ng-controller="sortController">
+            <!--Sort By : <select ng-model="sortColumn">
+                <option value="name">name</option>
+                <option value="dateOfBirth">Date of Birth</option>
+                <option value="gender">Gender</option>
+                <option value="salary">Salary</option>
+                <option></option>
+            </select>-->
+          <!-- <br><br> Search : <input type="text" ng-model="searchText.name" placeholder="Search Employees"><br><br>-->
+            <table border="1" style="border:1px solid#ccc; border-collapse:collapse;">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Date of Birth </th>
+                        <th>Gender </th>
+                        <th>Salary </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="employee in employees | filter:searchText">
+                        <td>{{employee.name}}</td>
+                        <td>{{employee.dateOfBirth | date: "dd/MMMM/yyyy"}}</td>
+                        <td>{{employee.gender | gender}} </td>
+                        <td>{{employee.salary}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <script>
+            var app = angular.module('sorting', []);
+            app.filter("gender", function(){
+                    return function(gender){
+                        switch(gender){
+                            case 1:
+                            return "Male";
+                            case 2:
+                            return "Female";
+                            case 3:
+                            return "Not Disclosed";
+                        }
+                    }
+            });
+            app.controller('sortController', function($scope){
+                var employees = [
+                    {name : 'Ben', dateOfBirth: new Date("November 23, 1990"), gender: 1, salary: 65000},
+                    {name : 'Sara', dateOfBirth: new Date("January 26, 1990"), gender: 2, salary: 45000},
+                    {name : 'Long', dateOfBirth: new Date("December 03, 1989"), gender: 1, salary: 34000},
+                    {name : 'Lorry', dateOfBirth: new Date("March 25, 1993"), gender: 2, salary: 50000},
+                    {name : 'korel', dateOfBirth: new Date("June 14, 1991"), gender: 3, salary: 10000}
+                ];
+                $scope.employees = employees;
+                
+            });
+        </script>
+    </body>
+</html>
