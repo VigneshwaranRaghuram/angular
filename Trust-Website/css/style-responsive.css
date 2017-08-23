@@ -1,0 +1,33 @@
+@charset "utf-8";
+/* CSS Document */
+
+@media only screen  and (min-device-width: 320px)  and (max-device-width: 480px)  and (orientation: portrait) {
+	.navbar-brand a { font-size:18px;}
+	ul.share-icons { line-height:50px; display:block;}
+}
+
+
+
+
+@media only screen  and (min-device-width: 320px)  and (max-device-width: 480px)  and (orientation: landscape) {
+	
+	
+}
+
+
+@media only screen  and (min-device-width: 485px)  and (max-device-width: 640px)  and (orientation: landscape) {
+	
+}
+
+
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+	
+}
+
+
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+	
+	
+}
